@@ -1,0 +1,100 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layouts/index}">
+<head>
+<title>item</title>
+</head>
+<body>
+	<div layout:fragment="headercontent">
+		<ol class="breadcrumb">
+			<li><a href="#"><i class="fa fa-dashboard"></i> Tài khoản </a></li>
+			<li class="active">Danh sách</li>
+		</ol>
+
+	</div>
+	<section layout:fragment="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+
+					<!-- /.card -->
+
+					<div class="card">
+						<div class="card-header">
+							<div class="row">
+								<div class="col-md-4" style="padding-left: 1.8rem">
+									<a href="">
+										<button type="submit" class="btn btn-primary">Thêm
+											mới</button>
+									</a>
+								</div>
+								<div class="col-md-6"></div>
+
+							</div>
+						</div>
+						<!-- /.card-header -->
+						<div class="card-body">
+
+							<table id="example1"
+								class="table table-bordered table-striped text-center">
+								<thead>
+									<tr>
+										<th>Rendering engine</th>
+										<th>Browser</th>
+										<th>Platform(s)</th>
+										<th>Engine version</th>
+										<th>CSS grade</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>jenis kegiatan 1</td>
+										<td>keterangan jenis kegiatan 1</td>
+										<td>keterangan jenis kegiatan 1</td>
+
+										<td><a href="#" class="btn" title="Edit Data"
+											style="background: #38e338"><span class="fa fa-edit"></span></a>
+											<a href="#" class="btn" title="Delete data" 
+											style="background: #f64343" data-toggle="modal" data-target="#confirm_delete"><span class="fa fa-trash" ></span></a>
+										</td>
+									</tr>
+
+								</tbody>
+
+							</table>
+
+							<!-- /.card-body -->
+						</div>
+						<!-- /.card -->
+					</div>
+					<!-- /.col-md-6 -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /.container-fluid -->
+
+		</div>
+		<div class="modal fade" id="confirm_delete" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						
+						<h4 class="modal-title">Xóa tài khoản</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p>Bạn có thực sự muốn xóa ?.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-info" >Thực hiện</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

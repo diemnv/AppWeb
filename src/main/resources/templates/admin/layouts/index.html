@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title layout:title-pattern="$LAYOUT_TITLE :: $CONTENT_TITLE">ITEM</title>
+<meta
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+	name="viewport" />
+<link rel="icon" th:href="@{/img/icon/favicon.ico}" type="image/x-icon" />
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Font Awesome -->
+<link rel="stylesheet"
+	th:href="@{/plugins/font-awesome/css/font-awesome.min.css}">
+<!-- Ionicons -->
+<link rel="stylesheet"
+	href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" th:href="@{/css/adminlte.min.css}">
+<!-- iCheck -->
+<link rel="stylesheet" th:href="@{/plugins/iCheck/flat/blue.css}">
+<!-- Morris chart -->
+<link rel="stylesheet" th:href="@{/plugins/morris/morris.css}">
+<!-- jvectormap -->
+<link rel="stylesheet"
+	th:href="@{/plugins/jvectormap/jquery-jvectormap-1.2.2.css}">
+<!-- Date Picker -->
+<link rel="stylesheet" th:href="@{/plugins/datepicker/datepicker3.css}">
+<!-- Daterange picker -->
+<link rel="stylesheet"
+	th:href="@{/plugins/daterangepicker/daterangepicker-bs3.css}">
+<!-- bootstrap wysihtml5 - text editor -->
+<link rel="stylesheet"
+	th:href="@{/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css}">
+<!-- Google Font: Source Sans Pro -->
+<link
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
+	rel="stylesheet">
+
+
+<link type="text/css"
+	th:href="@{/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css}"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/plugins/select2/select2.min.css}" />
+
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- AdminLTE -->
+<script th:src="@{/js/adminlte.js}"></script>
+
+<!-- OPTIONAL SCRIPTS -->
+
+<script th:src="@{/js/demo.js}"></script>
+
+<script
+	th:src="@{/plugins/bootstrap-multiselect/js/bootstrap-multiselect.js}"></script>
+<script th:src="@{/plugins/select2/select2.js}"></script>
+<script th:src="@{/admin_asset/ckeditor/ckeditor.js}"></script>
+
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+		<nav
+			class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+			<!-- Left navbar links -->
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" data-widget="pushmenu"
+					href="#"><i class="fa fa-bars"></i></a></li>
+
+			</ul>
+
+			<!-- SEARCH FORM -->
+
+
+			<!-- Right navbar links -->
+
+		</nav>
+		<!-- /.navbar -->
+
+		<!-- Main Sidebar Container -->
+		<aside class="main-sidebar sidebar-dark-primary elevation-4">
+			<!-- Brand Logo -->
+			<a class="text-center brand-link"> <img
+				th:src="@{/img/global.png}" style="width: 11rem; height: 5rem;"
+				alt="User Image">
+
+			</a>
+
+			<!-- Sidebar -->
+			<div class="sidebar">
+				<!-- Sidebar user panel (optional) -->
+				<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+
+
+					<div class="info">
+						<a href="#" class="d-block">Admin</a>
+					</div>
+				</div>
+
+				<!-- Sidebar Menu -->
+				<nav class="mt-2">
+					<ul class="nav nav-pills nav-sidebar flex-column"
+						data-widget="treeview" role="menu" data-accordion="false">
+						<!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+						<li class="nav-item has-treeview menu-open"><a href="#"
+							class="nav-link active"> <i class="nav-icon fa fa-dashboard"></i>
+								<p>
+									Tin tức <i class="right fa fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a th:href="@{/new/list}"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+										<p>Danh sách</p>
+								</a></li>
+								<li class="nav-item"><a th:href="@{/new/create}"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+										<p>Thêm mới</p>
+								</a></li>
+
+							</ul></li>
+
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fa fa-pie-chart"></i>
+								<p>
+									Slide <i class="right fa fa-angle-left"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a href="pages/charts/chartjs.html"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+										<p>Danh sách</p>
+								</a></li>
+								<li class="nav-item"><a href="pages/charts/flot.html"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+										<p>Thêm mới</p>
+								</a></li>
+
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fa fa-tree"></i>
+								<p>
+									Nhóm quyền <i class="fa fa-angle-left right"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a th:href="@{/role/list}"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+										<p>Danh sách</p>
+								</a></li>
+								<li class="nav-item"><a th:href="@{/role/create}"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+										<p>Thêm mới</p>
+								</a></li>
+
+							</ul></li>
+						<li class="nav-item has-treeview"><a href="#"
+							class="nav-link"> <i class="nav-icon fa fa-edit"></i>
+								<p>
+									Tài khoản <i class="fa fa-angle-left right"></i>
+								</p>
+						</a>
+							<ul class="nav nav-treeview">
+								<li class="nav-item"><a th:href="@{/user/list}"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+										<p>Danh sách</p>
+								</a></li>
+								<li class="nav-item"><a th:href="@{/user/create}"
+									class="nav-link"> <i class="fa fa-circle-o nav-icon"></i>
+										<p>Thêm mới</p>
+								</a></li>
+
+							</ul></li>
+
+
+					</ul>
+				</nav>
+				<!-- /.sidebar-menu -->
+			</div>
+			<!-- /.sidebar -->
+		</aside>
+		<!-- Main Sidebar Container -->
+		<div class="content-wrapper">
+			<section class="content-header" layout:fragment="headercontent"></section>
+			<!-- Content Header (Page header) -->
+			<!-- Main content -->
+			<section class="content" layout:fragment="content"></section>
+		</div>
+	</div>
+	<footer class="main-footer">
+		<strong> &copy; 2019 <script>
+			new Date().getFullYear() > 2017
+					&& document.write("-" + new Date().getFullYear());
+		</script> , Company.
+		</strong>
+	</footer>
+
+	<section layout:fragment="script"></section>
+
+
+</body>
+
+</html>

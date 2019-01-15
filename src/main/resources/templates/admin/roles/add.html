@@ -1,0 +1,107 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layouts/index}">
+<head>
+<title>item</title>
+</head>
+<body>
+
+	<section layout:fragment="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+
+					<!-- /.card -->
+
+					<div class="card">
+						<div class="card-header">
+							<div class="row">
+								<div class=""></div>
+								<div class="col-lg-10 col-md-offset-2">
+									<h3 class="page-header">
+										Nhóm quyền <small>Thêm mới</small>
+									</h3>
+								</div>
+							</div>
+
+						</div>
+
+						<!-- /.card-header -->
+						<div class="card-body">
+							<div class="row">
+
+								<!-- /.col-lg-12 -->
+								<div class="col-md-2"></div>
+								<div class="col-md-8 col-md-offset-2"
+									style="padding-bottom: 120px">
+									<form action="" method="POST" enctype="multipart/form-data">
+
+										<div class="form-group">
+											<label>Tên</label> <input type="text" class="form-control"
+												name="name" placeholder="" />
+										</div>
+										<div class="form-group">
+											<label>Mô tả</label> <input class="form-control"
+												name="name" placeholder="" />
+										</div>
+										
+										<div class="row form-group">
+											<div class="col-md-6">
+												<label>Chi tiết quyền </label> 
+												<select name=""
+													class="form-control" id="role_content" multiple="multiple">
+													
+													<option value="">Quản lý tài khoản thêm</option>
+													<option value="">Quản lý nhóm quyền thêm</option>
+													
+												</select>
+											</div>	
+										</div>
+										<div class="form-group">
+											
+										</div>
+										
+										
+										<div class="form-group">
+											<button type="submit" class="btn btn-default">Thêm</button>
+											<button type="reset" class="btn btn-default">Làm mới</button>
+										</div>
+									<form>
+								</div>
+
+								<!-- /.card-body -->
+							</div>
+							<!-- /.card -->
+						</div>
+						<!-- /.col-md-6 -->
+					</div>
+					<!-- /.row -->
+				</div>
+				<!-- /.container-fluid -->
+
+			</div>
+			
+	</section>
+	<section layout:fragment="script">
+
+	<script>
+	
+	$(document).ready(function(){
+		
+  
+        $('#role_content').multiselect({
+            enableFiltering: true,
+            includeSelectAllOption: false,
+            maxHeight:200,
+            dropUp: true,
+            buttonWidth: 500,
+            nonSelectedText: 'Chưa chọn quyền',
+           // nSelectedText: '',
+
+
+        });
+
+    });
+	</script>
+</section>
+</body>
+</html>

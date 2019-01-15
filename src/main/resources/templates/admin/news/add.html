@@ -4,88 +4,97 @@
 <title>item</title>
 </head>
 <body>
-
-	<section layout:fragment="content">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-12">
-
-					<!-- /.card -->
-
-					<div class="card">
-						<div class="card-header">
-							<div class="row">
-								<div class=""></div>
-								<div class="col-lg-10 col-md-offset-2">
-									<h3 class="page-header">
-										Tin Tức <small>Thêm mới</small>
-									</h3>
-								</div>
-							</div>
-
-						</div>
-
-						<!-- /.card-header -->
-						<div class="card-body">
-							<div class="row">
-
-								<!-- /.col-lg-12 -->
-								<div class="col-md-2"></div>
-								<div class="col-md-8 col-md-offset-2"
-									style="padding-bottom: 120px">
-									<form action="" method="POST" enctype="multipart/form-data">
-
-										<div class="form-group">
-											<label>Đường dẫn</label> 
-											<input type="text" class="form-control"
-												name="name" placeholder="" />
-										</div>
-										<div class="form-group">
-											<label>Tiêu đề</label> 
-											<input class="form-control"
-												name="name" placeholder="" />
-										</div>
-										<div class="form-group">
-											<label>Mô tả</label> <input type="text" class="form-control"
-												name="name" placeholder="" />
-										</div>
-										<div class="form-group">
-											<label>Nội dung</label>
-											<textarea id="content" name="content" class="form-control ckeditor" rows="5"></textarea>
-										</div>
-										
-										
-										
-										<div class="form-group">
-											<button type="submit" class="btn btn-default">Thêm </button>
-											<button type="reset" class="btn btn-default">Làm mới</button>
-										</div>
-									<form>
-								</div>
-
-								<!-- /.card-body -->
-							</div>
-							<!-- /.card -->
-						</div>
-						<!-- /.col-md-6 -->
-					</div>
-					<!-- /.row -->
+	<div class="container">
+		<form th:action="@{/save}" method="POST" th:object="${news}"
+			onsubmit="return validateForm()">
+			<div class="form-group">
+				<div>
+					<input type="hidden" th:field="*{idNews}" class="form-control"
+						placeholder="title of news">
 				</div>
-				<!-- /.container-fluid -->
 
 			</div>
-			
-	</section>
-<section layout:fragment="script">
+			<div class="form-group">
+				<label for="url">URL</label> <input type="text" th:field="*{url}"
+					class="form-control" id="url" placeholder="url of news"> <i
+					id="message-error-url" style="color: red"></i>
+			</div>
+			<div class="form-group">
+				<label for="title">Title</label> <input type="text"
+					th:field="*{title}" class="form-control" id="title"
+					placeholder="title of news"> <i id="message-error-title"
+					style="color: red"></i>
+			</div>
+			<div class="form-group">
+				<label for="description">description</label>
+				<textarea th:field="*{description}" class="form-control"
+					id="description" placeholder="description of news"></textarea>
+				<i id="message-error-description" style="color: red"></i>
+			</div>
+			<div class="form-group">
+				<label for="content">content</label>
+				<textarea th:field="*{content}" class="form-control" id="content"
+					placeholder="content of news"></textarea>
+				<i id="message-error-content" style="color: red"></i>
+			</div>
+			<div class="form-group">
+				<label for="isHot">is_hot</label> <input type="text"
+					th:field="*{isHot}" class="form-control" id="isHot"
+					placeholder="isHot">
+			</div>
+			<div class="form-group">
+				<label for="approvedAt">approved_at</label> <input type="text"
+					th:field="*{approvedAt}" class="form-control" id="approvedAt"
+					placeholder="input approvedAt">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">
+					<i class="fas fa-save"></i> Save
+				</button>
 
-	<script>
-	
-	$(document).ready(function(){
-		
-      
+				<button type="reset" class="btn btn-default">
+					<i class="text-danger fas fa-times"></i> Reset
+				</button>
+			</div>
 
-    });
+		</form>
+	</div>
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+		function validateForm() {
+			var url = $("#url").val();
+			if (url == "") {
+				$("#message-error-url").text("Vui lòng nhập url");
+				$("#url").focus();
+				return false;
+			}
+			var title = $("#title").val();
+			if (title == "") {
+				$("#message-error-title").text("Vui lòng nhập title");
+				$("#title").focus();
+				return false;
+			}
+			var title = $("#description").val();
+			if (title == "") {
+				$("#message-error-description").text(
+						"Vui lòng nhập description");
+				return false;
+			}
+			var content = $("#content").val();
+			if (content == "") {
+				$("#message-error-content").text("Vui lòng nhập content");
+				return false;
+			}
+			return true;
+		}
 	</script>
-</section>
 </body>
 </html>

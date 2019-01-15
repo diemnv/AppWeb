@@ -1,12 +1,13 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{admin/layouts/index}">
+	layout:decorate="~{admin/layouts/index}"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>item</title>
 </head>
 <body>
 	<div layout:fragment="headercontent">
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Tài khoản </a></li>
+			<li><a href="#"><i class="fa fa-dashboard"></i> Nhóm quyền </a></li>
 			<li class="active">Danh sách</li>
 		</ol>
 
@@ -20,12 +21,17 @@
 
 					<div class="card">
 						<div class="card-header">
+							<div class="alert alert-success alert-dismissible"
+								th:if="${messages}">
+								<div th:utext="${messages}"></div>
+								<a href="#" class="close" data-dismiss="alert"
+									aria-label="close">&times; </a>
+							</div>
+
 							<div class="row">
 								<div class="col-md-4" style="padding-left: 1.8rem">
-									<a href="">
-										<button type="submit" class="btn btn-primary">Thêm
-											mới</button>
-									</a>
+									<a th:href="@{/role/create}" class="btn btn-primary"> Thêm
+										mới </a>
 								</div>
 								<div class="col-md-6"></div>
 
@@ -38,25 +44,23 @@
 								class="table table-bordered table-striped text-center">
 								<thead>
 									<tr>
-										<th>Rendering engine</th>
-										<th>Browser</th>
-										<th>Platform(s)</th>
-										<th>Engine version</th>
-										<th>CSS grade</th>
+										<th>Name</th>
+										<th>Description</th>
+										<th>Actions</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>1</td>
-										<td>jenis kegiatan 1</td>
-										<td>keterangan jenis kegiatan 1</td>
-										<td>keterangan jenis kegiatan 1</td>
+									<tr th:each="role : ${roles}">
 
-										<td><a href="#" class="btn" title="Edit Data"
-											style="background: #38e338"><span class="fa fa-edit"></span></a>
-											<a href="#" class="btn" title="Delete data" 
-											style="background: #f64343" data-toggle="modal" data-target="#confirm_delete"><span class="fa fa-trash" ></span></a>
-										</td>
+										<td th:utext="${role.name}"></td>
+										<td th:utext="${role.description}"></td>
+
+										<td><a th:href="@{|/role/edit/${role.id}|}" class="btn"
+											title="Edit Data" style="background: #38e338"><span
+												class="fa fa-edit"></span></a> <a class="btn btn_confirmDelete"
+											title="Delete data" style="background: #f64343"
+											th:data-code="${role.id}"><span
+												class="fa fa-trash"></span></a></td>
 									</tr>
 
 								</tbody>
@@ -74,26 +78,47 @@
 			<!-- /.container-fluid -->
 
 		</div>
-		<div class="modal fade" id="confirm_delete" role="dialog">
+		<div class="modal fade" id="confirm_delete" role="dialog"
+			tabindex="-1" aria-hidden="true">
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
-						
-						<h4 class="modal-title">Xóa tài khoản</h4>
+
+						<h4 class="modal-title">Xóa nhóm quyền</h4>
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p>Bạn có thực sự muốn xóa ?.</p>
+						<p>Bạn có thực sự muốn xóa</p>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-info" >Thực hiện</button>
+						<a class="btn btn-info" id = "btn_delete">Thực hiện</a>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Thoát</button>
 					</div>
 				</div>
 
 			</div>
 		</div>
+	</section>
+	<section layout:fragment="script">
+
+		<script>
+			$(document).ready(function() {
+				$('body').on('hidden.bs.modal', '.modal', function () {
+		            $(this).removeData('bs.modal');
+		            
+		        });
+
+				$(".btn_confirmDelete").on("click", function() {
+					//console.log($(this).data("code"));
+					var url_delete =  "/role/delete/"+$(this).data("code");
+					console.log(url_delete);
+					$("#btn_delete").attr("href",url_delete);
+					$("#confirm_delete").modal();
+				});
+
+			});
+		</script>
 	</section>
 
 </body>

@@ -1,65 +1,63 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="~{admin/layouts/index}">
+	layout:decorate="~{admin/layouts/index}"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>item</title>
+<title>Thêm tin tức</title>
 </head>
 <body>
-	<div class="container">
-		<form th:action="@{/save}" method="POST" th:object="${news}"
-			onsubmit="return validateForm()">
-			<div class="form-group">
-				<div>
-					<input type="hidden" th:field="*{idNews}" class="form-control"
-						placeholder="title of news">
+	<section layout:fragment="content">
+		<div class="container">
+			<form th:action="@{/save}" method="POST" th:object="${news}"
+				onsubmit="return validateForm()">
+				<div class="form-group">
+					<div>
+						<input type="hidden" th:field="*{idNews}" class="form-control"
+							placeholder="title of news">
+					</div>
+
+				</div>
+				<div class="form-group">
+					<label for="url">URL</label> <input type="text" th:field="*{url}"
+						class="form-control" id="url" placeholder="url of news"> <i
+						id="message-error-url" style="color: red"></i>
+				</div>
+				<div class="form-group">
+					<label for="title">Title</label> <input type="text"
+						th:field="*{title}" class="form-control" id="title"
+						placeholder="title of news"> <i id="message-error-title"
+						style="color: red"></i>
+				</div>
+				<div class="form-group">
+					<label for="description">description</label>
+					<textarea th:field="*{description}" class="form-control"
+						id="description" placeholder="description of news"></textarea>
+					<i id="message-error-description" style="color: red"></i>
+				</div>
+				<div class="form-group">
+					<label for="content">content</label>
+					<textarea th:field="*{content}" class="form-control" id="content"
+						placeholder="content of news"></textarea>
+					<i id="message-error-content" style="color: red"></i>
+				</div>
+				<div class="form-group">
+					<label for="isHot">Độ nóng</label> <input type="text"
+						th:field="*{isHot}" class="form-control" id="isHot"
+						placeholder="isHot">
+				</div>
+				<div class="form-group">
+					<label for="approvedAt">Chấp thuận</label> <input type="text"
+						th:field="*{approvedAt}" class="form-control" id="approvedAt"
+						placeholder="input approvedAt">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Save</button>
+
+					<button type="reset" class="btn btn-default">Reset</button>
 				</div>
 
-			</div>
-			<div class="form-group">
-				<label for="url">URL</label> <input type="text" th:field="*{url}"
-					class="form-control" id="url" placeholder="url of news"> <i
-					id="message-error-url" style="color: red"></i>
-			</div>
-			<div class="form-group">
-				<label for="title">Title</label> <input type="text"
-					th:field="*{title}" class="form-control" id="title"
-					placeholder="title of news"> <i id="message-error-title"
-					style="color: red"></i>
-			</div>
-			<div class="form-group">
-				<label for="description">description</label>
-				<textarea th:field="*{description}" class="form-control"
-					id="description" placeholder="description of news"></textarea>
-				<i id="message-error-description" style="color: red"></i>
-			</div>
-			<div class="form-group">
-				<label for="content">content</label>
-				<textarea th:field="*{content}" class="form-control" id="content"
-					placeholder="content of news"></textarea>
-				<i id="message-error-content" style="color: red"></i>
-			</div>
-			<div class="form-group">
-				<label for="isHot">is_hot</label> <input type="text"
-					th:field="*{isHot}" class="form-control" id="isHot"
-					placeholder="isHot">
-			</div>
-			<div class="form-group">
-				<label for="approvedAt">approved_at</label> <input type="text"
-					th:field="*{approvedAt}" class="form-control" id="approvedAt"
-					placeholder="input approvedAt">
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary">
-					<i class="fas fa-save"></i> Save
-				</button>
-
-				<button type="reset" class="btn btn-default">
-					<i class="text-danger fas fa-times"></i> Reset
-				</button>
-			</div>
-
-		</form>
-	</div>
-
+			</form>
+		</div>
+	</section>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -72,25 +70,25 @@
 		function validateForm() {
 			var url = $("#url").val();
 			if (url == "") {
-				$("#message-error-url").text("Vui lòng nhập url");
+				$("#message-error-url").text("Vui lÃ²ng nháº­p url");
 				$("#url").focus();
 				return false;
 			}
 			var title = $("#title").val();
 			if (title == "") {
-				$("#message-error-title").text("Vui lòng nhập title");
+				$("#message-error-title").text("Vui lÃ²ng nháº­p title");
 				$("#title").focus();
 				return false;
 			}
 			var title = $("#description").val();
 			if (title == "") {
 				$("#message-error-description").text(
-						"Vui lòng nhập description");
+						"Vui lÃ²ng nháº­p description");
 				return false;
 			}
 			var content = $("#content").val();
 			if (content == "") {
-				$("#message-error-content").text("Vui lòng nhập content");
+				$("#message-error-content").text("Vui lÃ²ng nháº­p content");
 				return false;
 			}
 			return true;
